@@ -317,5 +317,195 @@
         </div>
       </div>
     </section>
+    <!-- ============ PASO 5: FORMULARIO DE RESERVA / TICKETS ============ -->
+    <section id="tickets" class="py-5" style="background: #0b1120">
+      <div class="container py-4">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div
+              class="card border-0 rounded-xl shadow-lg p-4 p-md-5"
+              style="background: #111827"
+            >
+              <h2 class="fw-bold text-center mb-1">Reserva tus tickets</h2>
+              <p class="text-center text-slate-400 mb-4">
+                Completa tus datos y asegura tu lugar
+              </p>
+
+              <form id="ticketForm" novalidate class="row g-3">
+                <!-- Nombre -->
+                <div class="col-md-6">
+                  <label for="nombre" class="form-label"
+                    >Nombre completo *</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nombre"
+                    required
+                    minlength="3"
+                    aria-describedby="ayudaNombre"
+                  />
+                  <div id="ayudaNombre" class="form-text text-slate-500">
+                    Tal como aparece en tu DNI.
+                  </div>
+                  <div class="valid-feedback">¡Perfecto!</div>
+                  <div class="invalid-feedback">
+                    Escribe tu nombre y apellido (mín. 3 letras).
+                  </div>
+                </div>
+
+                <!-- Correo -->
+                <div class="col-md-6">
+                  <label for="correo" class="form-label"
+                    >Correo electrónico *</label
+                  >
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="correo"
+                    required
+                    aria-describedby="ayudaCorreo"
+                  />
+                  <div id="ayudaCorreo" class="form-text text-slate-500">
+                    Ahí enviaremos tus entradas.
+                  </div>
+                  <div class="valid-feedback">¡Perfecto!</div>
+                  <div class="invalid-feedback">Ingresa un correo válido.</div>
+                </div>
+
+                <!-- Celular -->
+                <div class="col-md-6">
+                  <label for="celular" class="form-label">Celular *</label>
+                  <input
+                    type="tel"
+                    class="form-control"
+                    id="celular"
+                    required
+                    pattern="9[0-9]{8}"
+                    placeholder="9XXXXXXXX"
+                    aria-describedby="ayudaCelular"
+                  />
+                  <div id="ayudaCelular" class="form-text text-slate-500">
+                    9 dígitos, empieza en 9.
+                  </div>
+                  <div class="valid-feedback">¡Perfecto!</div>
+                  <div class="invalid-feedback">
+                    Debe tener 9 dígitos y empezar en 9.
+                  </div>
+                </div>
+
+                <!-- Concierto -->
+                <div class="col-md-6">
+                  <label for="concierto" class="form-label">Concierto *</label>
+                  <select
+                    class="form-select"
+                    id="concierto"
+                    required
+                    aria-describedby="ayudaConcierto"
+                  >
+                    <option value="" selected disabled>Elige un evento</option>
+                    <option>Titanes del Riff</option>
+                    <option>Orquesta Oscura</option>
+                    <option>Voces del Trueno</option>
+                  </select>
+                  <div id="ayudaConcierto" class="form-text text-slate-500">
+                    Puedes cambiarlo luego.
+                  </div>
+                  <div class="valid-feedback">¡Perfecto!</div>
+                  <div class="invalid-feedback">Selecciona un concierto.</div>
+                </div>
+
+                <!-- Cantidad -->
+                <div class="col-md-6">
+                  <label for="cantidad" class="form-label"
+                    >Cantidad de entradas *</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="cantidad"
+                    required
+                    min="1"
+                    max="10"
+                    value="1"
+                    aria-describedby="ayudaCantidad"
+                  />
+                  <div id="ayudaCantidad" class="form-text text-slate-500">
+                    Máximo 10 por persona.
+                  </div>
+                  <div class="valid-feedback">¡Perfecto!</div>
+                  <div class="invalid-feedback">
+                    Ingresa entre 1 y 10 entradas.
+                  </div>
+                </div>
+
+                <!-- Términos -->
+                <div class="col-12">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="terminos"
+                      required
+                      aria-describedby="ayudaTerminos"
+                    />
+                    <label class="form-check-label" for="terminos"
+                      >Acepto los términos y condiciones *</label
+                    >
+                    <div id="ayudaTerminos" class="form-text text-slate-500">
+                      Debes aceptarlos para continuar.
+                    </div>
+                    <div class="invalid-feedback">
+                      Debes aceptar los términos.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Botones -->
+                <div class="col-12 d-flex flex-column flex-sm-row gap-2">
+                  <button
+                    type="submit"
+                    class="btn btn-danger rounded-pill px-4 fw-semibold"
+                  >
+                    Reservar ahora
+                  </button>
+                  <button
+                    type="reset"
+                    class="btn btn-outline-light rounded-pill px-4"
+                  >
+                    Limpiar
+                  </button>
+                </div>
+
+                <p
+                  class="mb-0 fw-semibold mt-2"
+                  id="formStatus"
+                  role="status"
+                  aria-live="polite"
+                ></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== VALIDACIÓN DEL FORMULARIO ===== -->
+    <script>
+      var form = document.getElementById("ticketForm");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var ok = form.checkValidity();
+        form.classList.add("was-validated");
+        var status = document.getElementById("formStatus");
+        if (ok) {
+          status.textContent =
+            "¡Reserva registrada! Revisa tu correo para el pago.";
+          status.style.color = "#4ade80";
+        } else {
+          status.textContent = "Revisa los campos marcados en rojo.";
+          status.style.color = "#f87171";
+        }
+      });
+    </script>
   </body>
 </html>
