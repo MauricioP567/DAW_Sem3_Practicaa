@@ -1,11 +1,567 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ===== META TAGS SEO ===== -->
+    <title>Vivo x El Metal Events — Agenda, tickets y artistas</title>
+    <meta
+      name="description"
+      content="Vivo x El Metal Events: portal de conciertos de metal. Agenda de eventos, compra de tickets y artistas en vivo en Perú."
+    />
+    <meta
+      name="keywords"
+      content="metal, conciertos, eventos, tickets, agenda, artistas, Perú, Huancayo, rock"
+    />
+    <meta name="author" content="vega-sanabria, andrade-egoavil" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- ===== BOOTSTRAP 5.3.3 (CSS) ===== -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- ===== TAILWIND (Play CDN) ===== -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- ===== FIX DE ESPECIFICIDAD Bootstrap + Tailwind ===== -->
+    <style>
+      .collapse:not(.show) {
+        display: none;
+      }
+      .navbar-collapse.collapsing {
+        display: flex;
+      }
+      @media (min-width: 992px) {
+        .navbar-expand-lg .navbar-collapse {
+          display: flex !important;
+        }
+      }
+
+      /* Texto claro sobre fondos oscuros (contraste AA) */
+      body {
+        color: #e2e8f0;
+      }
+      h1,
+      h2,
+      h3,
+      .navbar-brand {
+        color: #f8fafc;
+      }
+      .hero-lead {
+        color: #cbd5e1 !important;
+      }
+      /* Texto claro sobre fondos oscuros (contraste AA) */
+      body {
+        color: #e2e8f0;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      .navbar-brand {
+        color: #f8fafc;
+      }
+      .hero-lead {
+        color: #cbd5e1 !important;
+      }
+      .card-body h3 {
+        color: #f8fafc;
+      }
+
+      /* Textos secundarios con contraste suficiente (>=4.5:1) */
+      .text-slate-300 {
+        color: #cbd5e1 !important;
+      }
+      .text-slate-400 {
+        color: #b6c2d6 !important;
+      }
+      .text-slate-500 {
+        color: #aab6ca !important;
+      }
+      #tickets .form-text {
+        color: #aab6ca !important;
+      }
+      #tickets .form-label,
+      #tickets .form-check-label {
+        color: #e2e8f0 !important;
+      }
+      .card-body .text-slate-400 {
+        color: #c3ccdb !important;
+      }
+
+      /* Inputs legibles sobre las tarjetas oscuras */
+      #tickets .form-control,
+      #tickets .form-select {
+        background-color: #0b1120;
+        border-color: #334155;
+        color: #e2e8f0;
+      }
+      #tickets .form-control::placeholder {
+        color: #64748b;
+      }
+      #tickets .form-control:focus,
+      #tickets .form-select:focus {
+        background-color: #0b1120;
+        color: #e2e8f0;
+        border-color: #dc3545;
+        box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+      }
+    </style>
+  </head>
+
+  <body class="bg-slate-950 text-slate-100">
+    <main>
+      <!-- Estructura inicial -->
+    </main>
+
+    <!-- ===== BOOTSTRAP JS BUNDLE ===== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- ===================== NAVBAR ===================== -->
+    <header>
+      <nav
+        class="navbar navbar-expand-lg navbar-dark shadow-lg py-3 sticky-top"
+        style="
+          background-color: rgba(10, 10, 15, 0.85);
+          backdrop-filter: blur(8px);
+        "
+        aria-label="Navegación principal"
+      >
+        <div class="container">
+          <a class="navbar-brand fw-bold fs-4" href="#inicio">
+            🤘 Vivo x <span class="text-danger">El Metal</span>
+          </a>
+
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navContenido"
+            aria-controls="navContenido"
+            aria-expanded="false"
+            aria-label="Abrir menú de navegación"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navContenido">
+            <ul class="navbar-nav ms-auto gap-lg-2 align-items-lg-center">
+              <li class="nav-item">
+                <a class="nav-link active" href="#inicio">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#agenda">Agenda</a>
+              </li>
+
+              <!-- Dropdown de conciertos -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="dropConciertos"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Conciertos
+                </a>
+                <ul
+                  class="dropdown-menu dropdown-menu-dark"
+                  aria-labelledby="dropConciertos"
+                >
+                  <li>
+                    <a
+                      class="dropdown-item d-flex justify-content-between align-items-center"
+                      href="#"
+                    >
+                      Metal Fest 2026
+                      <span class="badge bg-danger ms-2">Nuevo</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item d-flex justify-content-between align-items-center"
+                      href="#"
+                    >
+                      Noche Sinfónica
+                      <span class="badge bg-danger ms-2">Nuevo</span>
+                    </a>
+                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li><a class="dropdown-item" href="#">Ver todos</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="#tickets">Tickets</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#contacto">Contacto</a>
+              </li>
+              <li class="nav-item ms-lg-2">
+                <a
+                  class="btn btn-danger rounded-pill px-3 fw-semibold"
+                  href="#tickets"
+                >
+                  Comprar tickets
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- ===================== HERO ===================== -->
+    <main>
+      <section
+        id="inicio"
+        class="position-relative text-center"
+        style="
+          background: linear-gradient(
+            120deg,
+            #0f172a 0%,
+            #4c0519 55%,
+            #0f172a 100%
+          );
+        "
+      >
+        <div class="container py-5">
+          <div class="row min-vh-75 align-items-center py-5">
+            <div class="col-lg-9 mx-auto text-center">
+              <span
+                class="badge rounded-pill bg-danger-subtle text-danger-emphasis mb-3 px-3 py-2"
+              >
+                Temporada 2026 · Perú
+              </span>
+
+              <h1
+                class="display-3 fw-bold text-balance max-w-3xl mx-auto"
+                style="letter-spacing: -0.02em"
+              >
+                El metal se vive fuerte, en vivo y sin excusas.
+              </h1>
+
+              <p class="lead hero-lead mx-auto mt-3 max-w-3xl">
+                Agenda de conciertos, entradas seguras y los artistas más
+                potentes de la escena nacional e internacional, todo en un solo
+                lugar.
+              </p>
+
+              <div
+                class="d-flex flex-column flex-sm-row gap-3 justify-content-center mt-4"
+              >
+                <a
+                  href="#tickets"
+                  class="btn btn-danger btn-lg rounded-pill px-4 fw-semibold"
+                >
+                  Comprar tickets
+                </a>
+                <a
+                  href="#agenda"
+                  class="btn btn-outline-light btn-lg rounded-pill px-4 fw-semibold"
+                >
+                  Ver agenda
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- ============ PASO 4: GRID DE ARTISTAS / CONCIERTOS ============ -->
+    <section id="agenda" class="py-5" style="background: #020617">
+      <div class="container py-4">
+        <h2 class="text-center fw-bold mb-2">Próximos conciertos</h2>
+        <p class="text-center text-slate-400 mb-5">
+          La agenda más pesada de la temporada
+        </p>
+
+        <div class="row g-4">
+          <!-- Tarjeta 1 -->
+          <div class="col-12 col-md-4">
+            <article
+              class="card h-100 border-0 rounded-xl shadow-lg overflow-hidden transition-transform hover:scale-105"
+              style="background: #111827"
+            >
+              <div
+                class="d-flex align-items-center justify-content-center"
+                style="
+                  height: 160px;
+                  background: linear-gradient(135deg, #7f1d1d, #0f172a);
+                  font-size: 3.5rem;
+                "
+              >
+                🎸
+              </div>
+              <div class="card-body text-slate-100">
+                <span class="badge bg-danger mb-2">Metal Fest</span>
+                <h3 class="h5 fw-bold">Titanes del Riff</h3>
+                <p class="text-slate-400 mb-3">
+                  15 de marzo · Anfiteatro Huancayo
+                </p>
+                <a
+                  href="#tickets"
+                  class="btn btn-outline-danger rounded-pill w-100"
+                  >Ver entradas</a
+                >
+              </div>
+            </article>
+          </div>
+
+          <!-- Tarjeta 2 -->
+          <div class="col-12 col-md-4">
+            <article
+              class="card h-100 border-0 rounded-xl shadow-lg overflow-hidden transition-transform hover:scale-105"
+              style="background: #111827"
+            >
+              <div
+                class="d-flex align-items-center justify-content-center"
+                style="
+                  height: 160px;
+                  background: linear-gradient(135deg, #1e3a8a, #0f172a);
+                  font-size: 3.5rem;
+                "
+              >
+                🥁
+              </div>
+              <div class="card-body text-slate-100">
+                <span class="badge bg-danger mb-2">Sinfónico</span>
+                <h3 class="h5 fw-bold">Orquesta Oscura</h3>
+                <p class="text-slate-400 mb-3">
+                  28 de marzo · Teatro Municipal
+                </p>
+                <a
+                  href="#tickets"
+                  class="btn btn-outline-danger rounded-pill w-100"
+                  >Ver entradas</a
+                >
+              </div>
+            </article>
+          </div>
+
+          <!-- Tarjeta 3 -->
+          <div class="col-12 col-md-4">
+            <article
+              class="card h-100 border-0 rounded-xl shadow-lg overflow-hidden transition-transform hover:scale-105"
+              style="background: #111827"
+            >
+              <div
+                class="d-flex align-items-center justify-content-center"
+                style="
+                  height: 160px;
+                  background: linear-gradient(135deg, #4c1d95, #0f172a);
+                  font-size: 3.5rem;
+                "
+              >
+                🎤
+              </div>
+              <div class="card-body text-slate-100">
+                <span class="badge bg-danger mb-2">En vivo</span>
+                <h3 class="h5 fw-bold">Voces del Trueno</h3>
+                <p class="text-slate-400 mb-3">12 de abril · Estadio IPD</p>
+                <a
+                  href="#tickets"
+                  class="btn btn-outline-danger rounded-pill w-100"
+                  >Ver entradas</a
+                >
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ============ PASO 5: FORMULARIO DE RESERVA / TICKETS ============ -->
+    <section id="tickets" class="py-5" style="background: #0b1120">
+      <div class="container py-4">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div
+              class="card border-0 rounded-xl shadow-lg p-4 p-md-5"
+              style="background: #111827"
+            >
+              <h2 class="fw-bold text-center mb-1">Reserva tus tickets</h2>
+              <p class="text-center text-slate-400 mb-4">
+                Completa tus datos y asegura tu lugar
+              </p>
+
+              <form id="ticketForm" novalidate class="row g-3">
+                <!-- Nombre -->
+                <div class="col-md-6">
+                  <label for="nombre" class="form-label"
+                    >Nombre completo *</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nombre"
+                    required
+                    minlength="3"
+                    aria-describedby="ayudaNombre"
+                  />
+                  <div id="ayudaNombre" class="form-text text-slate-500">
+                    Tal como aparece en tu DNI.
+                  </div>
+                  <div class="valid-feedback">¡Perfecto!</div>
+                  <div class="invalid-feedback">
+                    Escribe tu nombre y apellido (mín. 3 letras).
+                  </div>
+                </div>
+
+                <!-- Correo -->
+                <div class="col-md-6">
+                  <label for="correo" class="form-label"
+                    >Correo electrónico *</label
+                  >
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="correo"
+                    required
+                    aria-describedby="ayudaCorreo"
+                  />
+                  <div id="ayudaCorreo" class="form-text text-slate-500">
+                    Ahí enviaremos tus entradas.
+                  </div>
+                  <div class="valid-feedback">¡Perfecto!</div>
+                  <div class="invalid-feedback">Ingresa un correo válido.</div>
+                </div>
+
+                <!-- Celular -->
+                <div class="col-md-6">
+                  <label for="celular" class="form-label">Celular *</label>
+                  <input
+                    type="tel"
+                    class="form-control"
+                    id="celular"
+                    required
+                    pattern="9[0-9]{8}"
+                    placeholder="9XXXXXXXX"
+                    aria-describedby="ayudaCelular"
+                  />
+                  <div id="ayudaCelular" class="form-text text-slate-500">
+                    9 dígitos, empieza en 9.
+                  </div>
+                  <div class="valid-feedback">¡Perfecto!</div>
+                  <div class="invalid-feedback">
+                    Debe tener 9 dígitos y empezar en 9.
+                  </div>
+                </div>
+
+                <!-- Concierto -->
+                <div class="col-md-6">
+                  <label for="concierto" class="form-label">Concierto *</label>
+                  <select
+                    class="form-select"
+                    id="concierto"
+                    required
+                    aria-describedby="ayudaConcierto"
+                  >
+                    <option value="" selected disabled>Elige un evento</option>
+                    <option>Titanes del Riff</option>
+                    <option>Orquesta Oscura</option>
+                    <option>Voces del Trueno</option>
+                  </select>
+                  <div id="ayudaConcierto" class="form-text text-slate-500">
+                    Puedes cambiarlo luego.
+                  </div>
+                  <div class="valid-feedback">¡Perfecto!</div>
+                  <div class="invalid-feedback">Selecciona un concierto.</div>
+                </div>
+
+                <!-- Cantidad -->
+                <div class="col-md-6">
+                  <label for="cantidad" class="form-label"
+                    >Cantidad de entradas *</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="cantidad"
+                    required
+                    min="1"
+                    max="10"
+                    value="1"
+                    aria-describedby="ayudaCantidad"
+                  />
+                  <div id="ayudaCantidad" class="form-text text-slate-500">
+                    Máximo 10 por persona.
+                  </div>
+                  <div class="valid-feedback">¡Perfecto!</div>
+                  <div class="invalid-feedback">
+                    Ingresa entre 1 y 10 entradas.
+                  </div>
+                </div>
+
+                <!-- Términos -->
+                <div class="col-12">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="terminos"
+                      required
+                      aria-describedby="ayudaTerminos"
+                    />
+                    <label class="form-check-label" for="terminos"
+                      >Acepto los términos y condiciones *</label
+                    >
+                    <div id="ayudaTerminos" class="form-text text-slate-500">
+                      Debes aceptarlos para continuar.
+                    </div>
+                    <div class="invalid-feedback">
+                      Debes aceptar los términos.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Botones -->
+                <div class="col-12 d-flex flex-column flex-sm-row gap-2">
+                  <button
+                    type="submit"
+                    class="btn btn-danger rounded-pill px-4 fw-semibold"
+                  >
+                    Reservar ahora
+                  </button>
+                  <button
+                    type="reset"
+                    class="btn btn-outline-light rounded-pill px-4"
+                  >
+                    Limpiar
+                  </button>
+                </div>
+
+                <p
+                  class="mb-0 fw-semibold mt-2"
+                  id="formStatus"
+                  role="status"
+                  aria-live="polite"
+                ></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== VALIDACIÓN DEL FORMULARIO ===== -->
+    <script>
+      var form = document.getElementById("ticketForm");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var ok = form.checkValidity();
+        form.classList.add("was-validated");
+        var status = document.getElementById("formStatus");
+        if (ok) {
+          status.textContent =
+            "¡Reserva registrada! Revisa tu correo para el pago.";
+          status.style.color = "#4ade80";
+        } else {
+          status.textContent = "Revisa los campos marcados en rojo.";
+          status.style.color = "#f87171";
+        }
+      });
+    </script>
+  </body>
 </html>
